@@ -1,0 +1,130 @@
+<section class="publicar-container">
+
+  <div class="encabezado">
+    <a routerLink="/empleos" class="volver">
+      ← Volver a empleos
+    </a>
+
+    <h1>Publicar oferta laboral</h1>
+
+    <p>
+      Encuentra el talento que tu empresa necesita.
+      Completa los datos para publicar una nueva oportunidad laboral.
+    </p>
+  </div>
+
+  <form class="formulario" (ngSubmit)="publicar()">
+
+    <div class="grupo">
+      <label for="cargo">Nombre del puesto *</label>
+      <input
+        id="cargo"
+        type="text"
+        name="cargo"
+        [(ngModel)]="oferta.cargo"
+        placeholder="Ej. Asistente administrativo"
+        required>
+    </div>
+
+    <div class="grupo">
+      <label for="empresa">Nombre de la empresa *</label>
+      <input
+        id="empresa"
+        type="text"
+        name="empresa"
+        [(ngModel)]="oferta.empresa"
+        placeholder="Ej. Empresa ABC"
+        required>
+    </div>
+
+    <div class="grupo">
+      <label for="categoria">Categoría laboral *</label>
+      <select
+        id="categoria"
+        name="categoria"
+        [(ngModel)]="oferta.categoria"
+        required>
+
+        <option value="" disabled>Selecciona una categoría</option>
+        <option value="Administración">Administración</option>
+        <option value="Tecnología">Tecnología</option>
+        <option value="Ventas">Ventas</option>
+        <option value="Atención al cliente">Atención al cliente</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Diseño">Diseño</option>
+
+      </select>
+    </div>
+
+    <div class="grupo">
+      <label for="ubicacion">Ubicación *</label>
+      <input
+        id="ubicacion"
+        type="text"
+        name="ubicacion"
+        [(ngModel)]="oferta.ubicacion"
+        placeholder="Ej. Huancayo, Junín"
+        required>
+    </div>
+
+    <div class="grupo">
+      <label for="modalidad">Modalidad *</label>
+      <select
+        id="modalidad"
+        name="modalidad"
+        [(ngModel)]="oferta.modalidad"
+        required>
+
+        <option value="" disabled>Selecciona una modalidad</option>
+        <option value="Presencial">Presencial</option>
+        <option value="Remoto">Remoto</option>
+        <option value="Híbrido">Híbrido</option>
+
+      </select>
+    </div>
+
+    <div class="grupo">
+      <label for="salario">Salario</label>
+      <input
+        id="salario"
+        type="text"
+        name="salario"
+        [(ngModel)]="oferta.salario"
+        placeholder="Ej. S/ 1,500 mensuales">
+    </div>
+
+    <div class="grupo completo">
+      <label for="descripcion">Descripción del puesto *</label>
+      <textarea
+        id="descripcion"
+        name="descripcion"
+        [(ngModel)]="oferta.descripcion"
+        rows="5"
+        placeholder="Describe las funciones y responsabilidades..."
+        required></textarea>
+    </div>
+
+    <div class="grupo completo">
+      <label for="requisitos">Requisitos *</label>
+      <textarea
+        id="requisitos"
+        name="requisitos"
+        [(ngModel)]="oferta.requisitos"
+        rows="4"
+        placeholder="Describe los requisitos para el puesto..."
+        required></textarea>
+    </div>
+
+    <div class="acciones-formulario">
+      <a routerLink="/empleos" class="btn-cancelar">
+        Cancelar
+      </a>
+
+      <button type="submit" class="btn-publicar">
+        Publicar oferta
+      </button>
+    </div>
+
+  </form>
+</section>
+

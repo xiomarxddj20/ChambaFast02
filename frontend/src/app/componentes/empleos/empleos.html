@@ -1,47 +1,163 @@
 <section class="empleos">
 
-  <div class="encabezado">
+  <div class="contenedor-empleos">
 
-    <h1>Encuentra tu próxima oportunidad laboral</h1>
+    <!-- Encabezado -->
+    <div class="encabezado-empleos">
+      <h1>Oportunidades laborales</h1>
+      <p>
+        Explora diferentes áreas laborales y encuentra
+        nuevas oportunidades para crecer profesionalmente.
+      </p>
+    </div>
 
-    <p>
-      Descubre ofertas de trabajo y conecta con empresas
-      que buscan personas con tu talento.
-    </p>
+    <!-- Categorías -->
+    <section class="seccion-categorias">
+
+      <h2>Categorías laborales</h2>
+
+      <div class="categorias">
+
+        <div class="categoria">
+          <span>💼</span>
+          <h3>Administración</h3>
+        </div>
+
+        <div class="categoria">
+          <span>💻</span>
+          <h3>Tecnología</h3>
+        </div>
+
+        <div class="categoria">
+          <span>🛒</span>
+          <h3>Ventas</h3>
+        </div>
+
+        <div class="categoria">
+          <span>🎧</span>
+          <h3>Atención al cliente</h3>
+        </div>
+
+        <div class="categoria">
+          <span>📢</span>
+          <h3>Marketing</h3>
+        </div>
+
+        <div class="categoria">
+          <span>🎨</span>
+          <h3>Diseño</h3>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Ofertas laborales -->
+    <section class="seccion-ofertas">
+
+      <div class="titulo-ofertas">
+        <h2>Oportunidades laborales</h2>
+
+        <a
+          routerLink="/publicar-oferta"
+          class="btn-publicar-empleo">
+          + Publicar oferta laboral
+        </a>
+      </div>
+
+      <div class="lista-ofertas">
+
+        <!-- Primera oferta de ejemplo -->
+        <article class="oferta">
+
+          <h3>Asistente administrativo</h3>
+
+          <p>🏢 Empresa: Empresa demostrativa</p>
+          <p>📍 Ubicación: Huancayo, Junín</p>
+          <p>💼 Modalidad: Presencial</p>
+
+          <a
+            [routerLink]="['/empleos', 1]"
+            class="btn-ver-ofertas">
+            Ver ofertas
+          </a>
+
+        </article>
+
+        <!-- Segunda oferta de ejemplo -->
+        <article class="oferta">
+
+          <h3>Desarrollador web junior</h3>
+
+          <p>🏢 Empresa: Empresa demostrativa</p>
+          <p>📍 Ubicación: Lima, Perú</p>
+          <p>💼 Modalidad: Remoto</p>
+
+          <a
+            [routerLink]="['/empleos', 2]"
+            class="btn-ver-ofertas">
+            Ver oferta
+          </a>
+
+        </article>
+
+        <!-- Ofertas nuevas publicadas -->
+        @for (oferta of ofertasPublicadas; track oferta.id) {
+
+          <article class="oferta oferta-nueva">
+
+            <span class="etiqueta-nueva">Nueva oferta</span>
+
+            <h3>{{ oferta.cargo }}</h3>
+
+            <p>🏢 Empresa: {{ oferta.empresa }}</p>
+            <p>📍 Ubicación: {{ oferta.ubicacion }}</p>
+            <p>💼 Modalidad: {{ oferta.modalidad }}</p>
+            <p>📂 Categoría: {{ oferta.categoria }}</p>
+            <p>💰 Salario: {{ oferta.salario || 'A tratar' }}</p>
+
+            <div class="detalles-nueva-oferta">
+              <h4>Descripción</h4>
+              <p>{{ oferta.descripcion }}</p>
+
+              <h4>Requisitos</h4>
+              <p>{{ oferta.requisitos }}</p>
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+      @if (ofertasPublicadas.length === 0) {
+        <p class="sin-ofertas">
+          Todavía no hay nuevas ofertas publicadas por empresas.
+        </p>
+      }
+
+    </section>
+
+    <!-- Sección para empresas -->
+    <section class="seccion-empresas">
+
+      <div class="icono-empresa">📢</div>
+
+      <div class="texto-empresa">
+        <h2>¿Eres una empresa?</h2>
+
+        <p>
+          Publica tu oferta laboral y encuentra el mejor talento
+          para tu negocio.
+        </p>
+      </div>
+
+      <a
+        routerLink="/publicar-oferta"
+        class="btn-publicar-empresa">
+        Publicar ahora
+      </a>
+
+    </section>
+
   </div>
-
-  <div class="buscador">
-    <input type="text" placeholder="¿Qué empleo estás buscando?">
-
-    <input type="text" placeholder="Ciudad o región">
-
-    <button type="button">Buscar empleos</button>
-  </div>
-
-  <div class="lista-ofertas">
-
-  <article class="oferta">
-    <h3>Asistente administrativo</h3>
-    <p>Empresa: Empresa demostrativa</p>
-    <p>Ubicación: Huancayo, Junín</p>
-    <p>Modalidad: Presencial</p>
-
-    <a [routerLink]="['/empleos', 1]" class="btn-ver-ofertas">
-      Ver ofertas
-    </a>
-  </article>
-
-  <article class="oferta">
-    <h3>Desarrollador web junior</h3>
-    <p>Empresa: Empresa demostrativa</p>
-    <p>Ubicación: Lima, Perú</p>
-    <p>Modalidad: Remoto</p>
-
-    <a [routerLink]="['/empleos', 2]" class="btn-ver-ofertas">
-      Ver oferta
-    </a>
-  </article>
-
-</div>
-
 </section>

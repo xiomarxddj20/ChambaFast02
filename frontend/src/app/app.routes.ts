@@ -1,13 +1,15 @@
 import { Routes } from '@angular/router';
 import { Inicio } from './componentes/inicio/inicio';
-import { Empleos } from './componentes/empleos/empleos';
+import { EmpleosComponent } from './componentes/empleos/empleos';
 import { Oferta } from './componentes/oferta/oferta';
+import { PublicarOfertaComponent } from './componentes/publicar-oferta/publicar-oferta';
 
 export const routes: Routes = [
   { path: '', component: Inicio },
-  { path: 'empleos', component: Empleos },
+  { path: 'empleos', component: EmpleosComponent },
   { path: 'empleos/:id', component: Oferta },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
+  { path: 'publicar-oferta', component: PublicarOfertaComponent },
 ];
 //import { EmprendimientosComponent } from './componentes/emprendimientos/emprendimientos';
 //import { ImpactoSocialComponent } from './componentes/impacto-social/impacto-social';
