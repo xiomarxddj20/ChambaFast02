@@ -1,0 +1,144 @@
+/* NAVBAR GENERAL */
+.navbar {
+  width: 100%;
+  background-color: #163b65;
+  padding: 15px 5%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 100;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.contenedor-navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+/* LOGO */
+.logo {
+  color: #ffffff;
+  font-size: 27px;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logo span {
+  color: #20a675;
+}
+
+/* MENÚ DE NAVEGACIÓN */
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+}
+
+.menu a {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.menu a:hover {
+  color: #20a675;
+}
+
+/* BOTONES */
+.acciones {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.btn-login {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
+}
+
+.btn-login:hover {
+  color: #20a675;
+}
+
+.btn-registro {
+  background-color: #20a675;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 11px 20px;
+  border-radius: 7px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-registro:hover {
+  background-color: #17865e;
+}
+
+/* TABLETS */
+@media (max-width: 900px) {
+  .contenedor-navbar {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 18px;
+  }
+
+  .menu {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 30px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* CELULARES */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 15px 5%;
+  }
+
+  .contenedor-navbar {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .logo {
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+  }
+
+  .menu {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .menu a {
+    font-size: 14px;
+  }
+
+  .acciones {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .btn-login,
+  .btn-registro {
+    font-size: 13px;
+  }
+}

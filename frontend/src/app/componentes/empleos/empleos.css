@@ -1,0 +1,191 @@
+
+/* CONTENEDOR PRINCIPAL */
+.empleos {
+  background-color: #f5f7fa;
+  min-height: 80vh;
+  padding: 50px 6%;
+  box-sizing: border-box;
+}
+
+.contenedor-empleos {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ENCABEZADO */
+.empleos h1 {
+  color: #163b65;
+  font-size: 34px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.empleos .descripcion {
+  color: #64748b;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* BUSCADOR */
+.buscador {
+  display: flex;
+  gap: 12px;
+  max-width: 800px;
+  margin: 0 auto 45px;
+}
+
+.buscador input {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 18px;
+  border: 1px solid #d5dce5;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.buscador input:focus {
+  border-color: #20a675;
+}
+
+.buscador button {
+  background-color: #163b65;
+  color: #ffffff;
+  border: none;
+  padding: 14px 25px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buscador button:hover {
+  background-color: #102c4c;
+}
+
+/* TÍTULO DE OPORTUNIDADES */
+.empleos h2 {
+  color: #163b65;
+  font-size: 25px;
+  margin-bottom: 25px;
+}
+
+/* LISTA DE OFERTAS */
+.lista-ofertas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+}
+
+/* TARJETAS */
+.oferta {
+  background-color: #ffffff;
+  padding: 28px;
+  border-radius: 12px;
+  border: 1px solid #e5eaf0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.oferta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.oferta h3 {
+  color: #163b65;
+  font-size: 21px;
+  margin-bottom: 16px;
+}
+
+.oferta p {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+/* BOTÓN VER OFERTAS */
+.btn-ver-ofertas {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #20a675;
+  color: #ffffff;
+
+  padding: 12px 25px;
+  margin-top: 15px;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.btn-ver-ofertas:hover {
+  background-color: #17865e;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-ver-ofertas:focus-visible {
+  outline: 3px solid #163b65;
+  outline-offset: 3px;
+}
+
+/* TABLETS */
+@media (max-width: 850px) {
+  .lista-ofertas {
+    grid-template-columns: 1fr;
+  }
+
+  .empleos {
+    padding: 40px 5%;
+  }
+}
+
+/* CELULARES */
+@media (max-width: 600px) {
+  .empleos h1 {
+    font-size: 27px;
+  }
+
+  .empleos h2 {
+    font-size: 22px;
+  }
+
+  .buscador {
+    flex-direction: column;
+  }
+
+  .buscador button {
+    width: 100%;
+  }
+
+  .oferta {
+    padding: 22px;
+  }
+
+  .oferta h3 {
+    font-size: 19px;
+  }
+
+  .btn-ver-ofertas {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

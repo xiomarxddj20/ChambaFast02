@@ -1,0 +1,146 @@
+
+.footer {
+  width: 100%;
+  background: #163b65;
+  color: white;
+  padding: 65px 7% 25px;
+}
+
+/* CONTENEDOR */
+
+.footer-contenido {
+  max-width: 1400px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.3fr;
+  gap: 40px;
+
+  padding-bottom: 45px;
+}
+
+/* COLUMNAS */
+
+.footer-columna {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.footer-logo {
+  font-size: 29px;
+  font-weight: 800;
+  color: white;
+  text-decoration: none;
+}
+
+.footer-logo span {
+  color: #35d49b;
+}
+
+.footer-descripcion p {
+  max-width: 340px;
+  color: #d5e0ed;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.footer-columna h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.footer-columna > a:not(.footer-logo) {
+  color: #d5e0ed;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-columna > a:not(.footer-logo):hover {
+  color: #35d49b;
+  transform: translateX(4px);
+}
+
+.footer-columna > p {
+  color: #d5e0ed;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* ETIQUETAS ODS */
+
+.footer-ods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.footer-ods span {
+  background: rgba(53, 212, 155, 0.15);
+  color: #62e0ad;
+  border: 1px solid rgba(53, 212, 155, 0.35);
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* PARTE INFERIOR */
+
+.footer-inferior {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 22px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-inferior p {
+  color: #d5e0ed;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* TABLETS */
+
+@media (max-width: 1000px) {
+  .footer-contenido {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 35px;
+  }
+}
+
+
+/* CELULARES */
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 50px 6% 22px;
+  }
+
+  .footer-contenido {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-descripcion p {
+    max-width: 100%;
+  }
+
+  .footer-inferior {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+}

@@ -1,0 +1,47 @@
+<section class="empleos">
+
+  <div class="encabezado">
+
+    <h1>Encuentra tu próxima oportunidad laboral</h1>
+
+    <p>
+      Descubre ofertas de trabajo y conecta con empresas
+      que buscan personas con tu talento.
+    </p>
+  </div>
+
+  <div class="buscador">
+    <input type="text" placeholder="¿Qué empleo estás buscando?">
+
+    <input type="text" placeholder="Ciudad o región">
+
+    <button type="button">Buscar empleos</button>
+  </div>
+
+  <div class="lista-ofertas">
+
+  <article class="oferta">
+    <h3>Asistente administrativo</h3>
+    <p>Empresa: Empresa demostrativa</p>
+    <p>Ubicación: Huancayo, Junín</p>
+    <p>Modalidad: Presencial</p>
+
+    <a [routerLink]="['/empleos', 1]" class="btn-ver-ofertas">
+      Ver ofertas
+    </a>
+  </article>
+
+  <article class="oferta">
+    <h3>Desarrollador web junior</h3>
+    <p>Empresa: Empresa demostrativa</p>
+    <p>Ubicación: Lima, Perú</p>
+    <p>Modalidad: Remoto</p>
+
+    <a [routerLink]="['/empleos', 2]" class="btn-ver-ofertas">
+      Ver oferta
+    </a>
+  </article>
+
+</div>
+
+</section>
