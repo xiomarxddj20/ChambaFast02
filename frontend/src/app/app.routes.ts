@@ -3,13 +3,15 @@ import { Inicio } from './componentes/inicio/inicio';
 import { EmpleosComponent } from './componentes/empleos/empleos';
 import { Oferta } from './componentes/oferta/oferta';
 import { PublicarOfertaComponent } from './componentes/publicar-oferta/publicar-oferta';
+import { EmprendimientosComponent } from './componentes/emprendimientos/emprendimientos';
 
 export const routes: Routes = [
   { path: '', component: Inicio },
   { path: 'empleos', component: EmpleosComponent },
   { path: 'empleos/:id', component: Oferta },
-  { path: '**', redirectTo: '' },
   { path: 'publicar-oferta', component: PublicarOfertaComponent },
+  { path: 'emprendimientos', component: EmprendimientosComponent},
+  { path: '**', redirectTo: '' },
 ];
 //import { EmprendimientosComponent } from './componentes/emprendimientos/emprendimientos';
 //import { ImpactoSocialComponent } from './componentes/impacto-social/impacto-social';

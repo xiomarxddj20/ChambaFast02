@@ -1,116 +1,360 @@
-.detalle-oferta {
-  background: #f5f7fa;
-  min-height: 80vh;
-  padding: 45px 6%;
+
+.emprendimientos {
+  padding: 45px 20px;
+  background: #ffffff;
 }
 
-.contenedor-oferta {
-  max-width: 1100px;
+.contenedor-emprendimientos {
+  max-width: 1200px;
   margin: auto;
 }
 
-.volver {
-  display: inline-block;
-  color: #163b65;
-  text-decoration: none;
-  font-weight: 600;
-  margin-bottom: 25px;
-}
+/* Encabezado */
 
-.encabezado-oferta {
-  background: white;
-  padding: 35px;
-  border-radius: 12px;
-  margin-bottom: 25px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.05);
-}
-
-.etiqueta {
-  color: #20a675;
-  font-weight: 700;
-  font-size: 13px;
-  text-transform: uppercase;
-}
-
-.encabezado-oferta h1 {
-  color: #163b65;
-  font-size: 32px;
-  margin: 12px 0;
-}
-
-.empresa {
-  color: #555;
-  font-size: 17px;
-}
-
-.informacion {
+.encabezado-emprendimientos {
   display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  margin-top: 20px;
-  color: #555;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 55px 45px;
+  background: #163b65;
+  color: #ffffff;
+  border-radius: 16px;
+  margin-bottom: 55px;
 }
 
-.contenido-oferta {
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 25px;
-  align-items: start;
+.texto-encabezado {
+  max-width: 650px;
 }
 
-.descripcion,
-.tarjeta-postulacion {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+.subtitulo {
+  color: #80e0bb;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
 }
 
-.descripcion h2,
-.tarjeta-postulacion h2 {
-  color: #163b65;
-  margin-bottom: 15px;
+.texto-encabezado h1 {
+  font-size: 38px;
+  margin: 18px 0;
 }
 
-.descripcion p,
-.descripcion li,
-.tarjeta-postulacion p {
-  color: #555;
-  line-height: 1.8;
+.texto-encabezado p {
+  color: #e5edf7;
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 28px;
 }
 
-.descripcion ul {
-  padding-left: 22px;
-  margin-bottom: 30px;
-}
-
-.btn-postular {
-  width: 100%;
+.btn-explorar {
+  display: inline-block;
   background: #20a675;
   color: white;
-  border: none;
-  padding: 14px;
-  border-radius: 7px;
+  padding: 13px 24px;
+  border-radius: 8px;
   font-weight: 700;
-  cursor: pointer;
-  margin-top: 15px;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-.btn-postular:hover {
+.btn-explorar:hover {
   background: #17865e;
 }
 
-@media (max-width: 750px) {
-  .contenido-oferta {
+.ilustracion-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 55px;
+  min-width: 230px;
+}
+
+/* Categorías */
+
+.seccion-categorias {
+  margin-bottom: 55px;
+}
+
+.seccion-categorias h2,
+.titulo-catalogo h2 {
+  color: #163b65;
+  font-size: 28px;
+  margin: 0 0 12px;
+}
+
+.descripcion-seccion,
+.titulo-catalogo p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.categorias {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 25px;
+}
+
+.categoria {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 18px;
+  background: #ffffff;
+  border: 1px solid #dce5f2;
+  border-radius: 11px;
+  color: #163b65;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.categoria span {
+  font-size: 27px;
+}
+
+.categoria:hover {
+  border-color: #20a675;
+  transform: translateY(-3px);
+}
+
+.categoria.activa {
+  background: #e0f5ed;
+  border-color: #20a675;
+  color: #087f5b;
+}
+
+/* Catálogo */
+
+.catalogo {
+  border-top: 1px solid #dce5f2;
+  padding-top: 40px;
+}
+
+.titulo-catalogo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.titulo-catalogo p {
+  margin: 0;
+}
+
+.contador {
+  background: #e0f5ed;
+  color: #087f5b;
+  padding: 9px 15px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.lista-emprendimientos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.tarjeta-emprendimiento {
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #dce5f2;
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgba(22, 59, 101, 0.05);
+  transition: 0.3s;
+}
+
+.tarjeta-emprendimiento:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 9px 22px rgba(22, 59, 101, 0.10);
+}
+
+.imagen-emprendimiento {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 155px;
+  background: #eaf6f1;
+}
+
+.imagen-emprendimiento span {
+  font-size: 65px;
+}
+
+.contenido-tarjeta {
+  padding: 22px;
+}
+
+.etiqueta-categoria {
+  display: inline-block;
+  padding: 6px 11px;
+  background: #e0f5ed;
+  color: #087f5b;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 20px;
+}
+
+.contenido-tarjeta h3 {
+  color: #163b65;
+  font-size: 21px;
+  margin: 15px 0 10px;
+}
+
+.descripcion {
+  min-height: 68px;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.informacion {
+  border-top: 1px solid #e2e8f0;
+  margin-top: 18px;
+  padding-top: 10px;
+}
+
+.informacion p {
+  color: #536985;
+  font-size: 13px;
+  margin: 9px 0;
+}
+
+.btn-conocer {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 8px;
+  background: #20a675;
+  color: white;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-conocer:hover {
+  background: #17865e;
+}
+
+.sin-resultados {
+  color: #64748b;
+  text-align: center;
+  padding: 35px;
+}
+
+/* Publicación */
+
+.seccion-publicar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  margin: 55px 0 20px;
+  padding: 30px;
+  background: #e0f5ed;
+  border-radius: 15px;
+}
+
+.icono-publicar {
+  font-size: 48px;
+}
+
+.texto-publicar {
+  flex: 1;
+}
+
+.texto-publicar h2 {
+  color: #163b65;
+  margin: 0 0 10px;
+}
+
+.texto-publicar p {
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.btn-publicar {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 20px;
+  background: #20a675;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.btn-publicar:hover {
+  background: #17865e;
+}
+
+/* Diseño adaptable */
+
+@media (max-width: 900px) {
+  .lista-emprendimientos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ilustracion-encabezado {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 650px) {
+  .encabezado-emprendimientos {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 35px 25px;
+  }
+
+  .texto-encabezado h1 {
+    font-size: 30px;
+  }
+
+  .ilustracion-encabezado {
+    align-self: center;
+  }
+
+  .categorias {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lista-emprendimientos {
     grid-template-columns: 1fr;
   }
 
-  .encabezado-oferta h1 {
-    font-size: 25px;
+  .titulo-catalogo {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .informacion {
+  .seccion-publicar {
     flex-direction: column;
-    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .btn-publicar {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 400px) {
+  .categorias {
+    grid-template-columns: 1fr;
   }
 }

@@ -1,72 +1,155 @@
-<section class="detalle-oferta">
 
-  <div class="contenedor-oferta">
+<section class="emprendimientos">
 
-    <a routerLink="/empleos" class="volver">
-      ← Volver a empleos
-    </a>
+  <div class="contenedor-emprendimientos">
 
-    <div class="encabezado-oferta">
-      <span class="etiqueta">Oportunidad laboral</span>
+    <!-- Encabezado principal -->
+    <section class="encabezado-emprendimientos">
 
-      <h1>Asistente administrativo</h1>
+      <div class="texto-encabezado">
+        <span class="subtitulo">IMPULSAMOS EL TALENTO LOCAL</span>
 
-      <p class="empresa">Empresa Demo S.A.C.</p>
-
-      <div class="informacion">
-        <span><i class="bi bi-geo-fill"></i>  Huancayo, Junín</span>
-        <span><i class="bi bi-briefcase"></i> Tiempo completo</span>
-        <span><i class="bi bi-buildings-fill"></i> Presencial</span>
-      </div>
-    </div>
-
-    <div class="contenido-oferta">
-
-      <div class="descripcion">
-
-        <h2>Descripción del puesto</h2>
+        <h1>Descubre emprendimientos</h1>
 
         <p>
-          Buscamos un asistente administrativo responsable y organizado
-          para apoyar en las actividades administrativas de nuestra empresa.
+          Conoce pequeños negocios, descubre productos únicos
+          y encuentra servicios ofrecidos por emprendedores de tu comunidad.
         </p>
 
-        <h2>Funciones principales</h2>
+        <a href="#catalogo" class="btn-explorar">
+          Explorar emprendimientos
+        </a>
+      </div>
 
-        <ul>
-          <li>Organizar y registrar documentos.</li>
-          <li>Apoyar en la elaboración de reportes.</li>
-          <li>Atender consultas de clientes.</li>
-          <li>Coordinar actividades administrativas.</li>
-        </ul>
+      <div class="ilustracion-encabezado">
+        <span>🛍️</span>
+        <span>💡</span>
+        <span>🚀</span>
+      </div>
 
-        <h2>Requisitos</h2>
+    </section>
 
-        <ul>
-          <li>Estudios técnicos o universitarios en administración.</li>
-          <li>Manejo básico de Microsoft Office.</li>
-          <li>Buena comunicación y organización.</li>
-          <li>Experiencia mínima de 6 meses.</li>
-        </ul>
+    <!-- Categorías -->
+    <section class="seccion-categorias">
+
+      <h2>Explora por categorías</h2>
+
+      <p class="descripcion-seccion">
+        Encuentra productos y servicios según tus intereses.
+      </p>
+
+      <div class="categorias">
+
+        @for (categoria of categorias; track categoria) {
+
+          <button
+            type="button"
+            class="categoria"
+            [class.activa]="categoriaSeleccionada === categoria"
+            (click)="seleccionarCategoria(categoria)">
+
+            @switch (categoria) {
+              @case ('Todos') { <span>🌟</span> }
+              @case ('Alimentos') { <span>🍕</span> }
+              @case ('Ropa y accesorios') { <span>👕</span> }
+              @case ('Tecnología') { <span>💻</span> }
+              @case ('Belleza') { <span>💄</span> }
+              @case ('Servicios') { <span>🛠️</span> }
+              @case ('Artesanía') { <span>🧶</span> }
+            }
+
+            {{ categoria }}
+
+          </button>
+
+        }
 
       </div>
 
-      <aside class="tarjeta-postulacion">
+    </section>
 
-        <h2>Información del empleo</h2>
+    <!-- Catálogo de emprendimientos -->
+    <section class="catalogo" id="catalogo">
 
-        <p><strong>Salario:</strong> Por definir</p>
-        <p><strong>Modalidad:</strong> Presencial</p>
-        <p><strong>Jornada:</strong> Tiempo completo</p>
-        <p><strong>Ubicación:</strong> Huancayo</p>
+      <div class="titulo-catalogo">
+        <div>
+          <h2>Emprendimientos destacados</h2>
+          <p>Conoce los negocios que forman parte de nuestra comunidad.</p>
+        </div>
 
-        <button class="btn-postular">
-          Postular ahora
-        </button>
+        <span class="contador">
+          {{ emprendimientosFiltrados.length }} emprendimientos
+        </span>
+      </div>
 
-      </aside>
+      <div class="lista-emprendimientos">
 
-    </div>
+        @for (emprendimiento of emprendimientosFiltrados; track emprendimiento.id) {
+
+          <article class="tarjeta-emprendimiento">
+
+            <div class="imagen-emprendimiento">
+              <span>{{ emprendimiento.icono }}</span>
+            </div>
+
+            <div class="contenido-tarjeta">
+
+              <span class="etiqueta-categoria">
+                {{ emprendimiento.categoria }}
+              </span>
+
+              <h3>{{ emprendimiento.nombre }}</h3>
+
+              <p class="descripcion">
+                {{ emprendimiento.descripcion }}
+              </p>
+
+              <div class="informacion">
+                <p>📍 {{ emprendimiento.ubicacion }}</p>
+                <p>🏷️ {{ emprendimiento.tipo }}</p>
+              </div>
+
+              <button type="button" class="btn-conocer">
+                Conocer emprendimiento
+              </button>
+
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+      @if (emprendimientosFiltrados.length === 0) {
+        <p class="sin-resultados">
+          No encontramos emprendimientos en esta categoría.
+        </p>
+      }
+
+    </section>
+
+    <!-- Invitación a emprendedores -->
+    <section class="seccion-publicar">
+
+      <div class="icono-publicar">
+        🚀
+      </div>
+
+      <div class="texto-publicar">
+        <h2>¿Tienes un emprendimiento?</h2>
+
+        <p>
+          Forma parte de ChambaFast, muestra tus productos o servicios
+          y conecta con nuevos clientes.
+        </p>
+      </div>
+
+      <a routerLink="/registro" class="btn-publicar">
+        Publicar mi emprendimiento
+      </a>
+
+    </section>
 
   </div>
 
