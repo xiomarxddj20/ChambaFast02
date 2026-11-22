@@ -50,11 +50,11 @@
 
             @switch (categoria) {
               @case ('Todos') { <span><i class="bi bi-stars"></i></span> }
-              @case ('Alimentos') { <span>🍕</span> }
+              @case ('Alimentos') { <span><i class="bi bi-fork-knife"></i></span> }
               @case ('Ropa y accesorios') { <span>👕</span> }
-              @case ('Tecnología') { <span>💻</span> }
+              @case ('Tecnología') { <span><i class="bi bi-laptop-fill"></i></span> }
               @case ('Belleza') { <span>💄</span> }
-              @case ('Servicios') { <span>🛠️</span> }
+              @case ('Servicios') { <span><i class="bi bi-tools"></i></span> }
               @case ('Artesanía') { <span>🧶</span> }
             }
 
@@ -105,8 +105,8 @@
               </p>
 
               <div class="informacion">
-                <p>📍 {{ emprendimiento.ubicacion }}</p>
-                <p>🏷️ {{ emprendimiento.tipo }}</p>
+                <p><i class="bi bi-geo-fill"></i> {{ emprendimiento.ubicacion }}</p>
+                <p><i class="bi bi-tag-fill"></i> {{ emprendimiento.tipo }}</p>
               </div>
 
               <button type="button" class="btn-conocer">
