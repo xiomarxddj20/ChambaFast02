@@ -10,7 +10,7 @@ import { OfertasService } from '../../servicios/ofertas.service';
   templateUrl: './publicar-oferta.html',
   styleUrl: './publicar-oferta.css'
 })
-export class PublicarOfertaComponent {
+export class PublicarOferta {
 
   oferta = {
     cargo: '',

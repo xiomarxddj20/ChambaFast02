@@ -9,7 +9,7 @@ import { OfertasService, OfertaLaboral } from '../../servicios/ofertas.service';
   templateUrl: './empleos.html',
   styleUrl: './empleos.css'
 })
-export class EmpleosComponent {
+export class Empleos {
 
   ofertasPublicadas: OfertaLaboral[] = [];
 

@@ -18,7 +18,7 @@ interface Emprendimiento {
   templateUrl: './emprendimientos.html',
   styleUrl: './emprendimientos.css'
 })
-export class EmprendimientosComponent {
+export class Emprendimientos {
 
   // Categorías disponibles
   categorias: string[] = [

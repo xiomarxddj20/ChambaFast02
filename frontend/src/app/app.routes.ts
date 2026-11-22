@@ -1,45 +1,19 @@
 import { Routes } from '@angular/router';
 import { Inicio } from './componentes/inicio/inicio';
-import { EmpleosComponent } from './componentes/empleos/empleos';
+import { Empleos} from './componentes/empleos/empleos';
 import { Oferta } from './componentes/oferta/oferta';
-import { PublicarOfertaComponent } from './componentes/publicar-oferta/publicar-oferta';
-import { EmprendimientosComponent } from './componentes/emprendimientos/emprendimientos';
+import { PublicarOferta} from './componentes/publicar-oferta/publicar-oferta';
+import { Emprendimientos} from './componentes/emprendimientos/emprendimientos';
+import { Login } from './componentes/login/login';
+import { Registro } from './componentes/registro/registro';
 
 export const routes: Routes = [
   { path: '', component: Inicio },
-  { path: 'empleos', component: EmpleosComponent },
+  { path: 'empleos', component: Empleos },
   { path: 'empleos/:id', component: Oferta },
-  { path: 'publicar-oferta', component: PublicarOfertaComponent },
-  { path: 'emprendimientos', component: EmprendimientosComponent},
+  { path: 'publicar-oferta', component: PublicarOferta },
+  { path: 'emprendimientos', component: Emprendimientos},
+  { path: 'login', component: Login},
+  { path: 'registro', component: Registro },
   { path: '**', redirectTo: '' },
 ];
-//import { EmprendimientosComponent } from './componentes/emprendimientos/emprendimientos';
-//import { ImpactoSocialComponent } from './componentes/impacto-social/impacto-social';
-//import { LoginComponent } from './componentes/login/login';
-//import { RegistroComponent } from './componentes/registro/registro';
-
-/*{
-    path: 'emprendimientos',
-    component: EmprendimientosComponent
-  },
-
-  {
-    path: 'impacto-social',
-    component: ImpactoSocialComponent
-  },
-
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-
-  {
-    path: 'registro',
-    component: RegistroComponent
-  },
-
-  {
-    path: '**',
-    redirectTo: ''
-  }
-*/
