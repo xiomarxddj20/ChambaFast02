@@ -65,20 +65,32 @@
           >
         </div>
 
+        
         <div class="campo">
-          <label for="tipoUsuario">¿Cómo deseas utilizar ChambaFast?</label>
+          <label for="tipoUsuario">
+            ¿Cómo deseas utilizar ChambaFast?
+          </label>
+
           <select
             id="tipoUsuario"
             name="tipoUsuario"
             [(ngModel)]="tipoUsuario"
             required
           >
-            <option value="" disabled>Selecciona una opción</option>
-            <option value="Busco empleo">Busco empleo</option>
-            <option value="Empresa">Soy una empresa</option>
-            <option value="Emprendedor">Soy emprendedor</option>
+            <option value="" disabled>
+              Selecciona una opción
+            </option>
+
+            <option value="postulante">
+              Busco empleo
+            </option>
+
+            <option value="empresa">
+              Soy empresa o emprendedor
+            </option>
           </select>
         </div>
+
 
         <div class="campo">
           <label for="contrasena">Contraseña</label>
