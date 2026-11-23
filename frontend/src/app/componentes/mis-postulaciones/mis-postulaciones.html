@@ -1,0 +1,14 @@
+<section class="cf-pagina"><div class="cf-contenedor">
+  <h1>Mis postulaciones</h1><p>Revisa el estado de tus solicitudes laborales.</p>
+  @if (mensaje) { <p role="status">{{ mensaje }}</p> }
+  <div class="cf-lista">
+    @for (item of postulaciones; track item.id) {
+      <article class="cf-tarjeta">
+        <h2>Oferta #{{ item.oferta_id }}</h2>
+        <p>Estado: <strong>{{ estadosPostulacion[item.estado] }}</strong></p>
+        <p>Fecha: {{ item.fecha_postulacion | date:'dd/MM/yyyy' }}</p>
+        <a [routerLink]="['/empleos', item.oferta_id]" class="cf-enlace">Ver oferta</a>
+      </article>
+    } @empty { <p>Todavía no tienes postulaciones.</p> }
+  </div>
+</div></section>
