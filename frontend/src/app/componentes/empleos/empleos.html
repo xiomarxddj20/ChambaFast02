@@ -1,163 +1,47 @@
 <section class="empleos">
-
   <div class="contenedor-empleos">
-
-    <!-- Encabezado -->
     <div class="encabezado-empleos">
       <h1>Oportunidades laborales</h1>
-      <p>
-        Explora diferentes áreas laborales y encuentra
-        nuevas oportunidades para crecer profesionalmente.
-      </p>
+      <p>Explora diferentes áreas laborales y encuentra nuevas oportunidades para crecer profesionalmente.</p>
     </div>
-
-    <!-- Categorías -->
     <section class="seccion-categorias">
-
       <h2>Categorías laborales</h2>
-
       <div class="categorias">
-
-        <div class="categoria">
-          <span><i class="bi bi-briefcase-fill"></i></span>
-          <h3>Administración</h3>
-        </div>
-
-        <div class="categoria">
-          <span><i class="bi bi-laptop-fill"></i></span>
-          <h3>Tecnología</h3>
-        </div>
-
-        <div class="categoria">
-          <span><i class="bi bi-cart-fill"></i></span>
-          <h3>Ventas</h3>
-        </div>
-
-        <div class="categoria">
-          <span><i class="bi bi-headphones"></i></span>
-          <h3>Atención al cliente</h3>
-        </div>
-
-        <div class="categoria">
-          <span><i class="bi bi-megaphone-fill"></i></span>
-          <h3>Marketing</h3>
-        </div>
-
-        <div class="categoria">
-          <span><i class="bi bi-palette-fill"></i></span>
-          <h3>Diseño</h3>
-        </div>
-
+        @for (categoria of categorias; track categoria) {
+          <button type="button" class="categoria" [class.activa]="categoriaSeleccionada === categoria" (click)="seleccionarCategoria(categoria)">
+            <h3>{{ categoria }}</h3>
+          </button>
+        }
       </div>
     </section>
-
-    <!-- Ofertas laborales -->
     <section class="seccion-ofertas">
-
       <div class="titulo-ofertas">
         <h2>Oportunidades laborales</h2>
-
-        <a
-          routerLink="/publicar-oferta"
-          class="btn-publicar-empleo">
-          + Publicar oferta laboral
-        </a>
+        <a routerLink="/publicar-oferta" class="btn-publicar-empleo">+ Publicar oferta laboral</a>
       </div>
-
+      @if (mensaje) { <p role="status">{{ mensaje }}</p> }
       <div class="lista-ofertas">
-
-        <!-- Primera oferta de ejemplo -->
-        <article class="oferta">
-
-          <h3>Asistente administrativo</h3>
-
-          <p><i class="bi bi-buildings-fill"></i> Empresa: Empresa demostrativa</p>
-          <p><i class="bi bi-geo-fill"></i> Ubicación: Huancayo, Junín</p>
-          <p><i class="bi bi-briefcase-fill"></i> Modalidad: Presencial</p>
-
-          <a
-            [routerLink]="['/empleos', 1]"
-            class="btn-ver-ofertas">
-            Ver ofertas
-          </a>
-
-        </article>
-
-        <!-- Segunda oferta de ejemplo -->
-        <article class="oferta">
-
-          <h3>Desarrollador web junior</h3>
-
-          <p><i class="bi bi-buildings-fill"></i> Empresa: Empresa demostrativa</p>
-          <p><i class="bi bi-geo-fill"></i> Ubicación: Lima, Perú</p>
-          <p><i class="bi bi-briefcase-fill"></i> Modalidad: Remoto</p>
-
-          <a
-            [routerLink]="['/empleos', 2]"
-            class="btn-ver-ofertas">
-            Ver oferta
-          </a>
-
-        </article>
-
-        <!-- Ofertas nuevas publicadas -->
         @for (oferta of ofertasPublicadas; track oferta.id) {
-
-          <article class="oferta oferta-nueva">
-
-            <span class="etiqueta-nueva">Nueva oferta</span>
-
+          <article class="oferta">
             <h3>{{ oferta.cargo }}</h3>
-
-            <p><i class="bi bi-buildings-fill"></i> Empresa: {{ oferta.empresa }}</p>
-            <p><i class="bi bi-geo-fill"></i> Ubicación: {{ oferta.ubicacion }}</p>
-            <p><i class="bi bi-briefcase-fill"></i> Modalidad: {{ oferta.modalidad }}</p>
-            <p><i class="bi bi-folder-fill"></i> Categoría: {{ oferta.categoria }}</p>
-            <p><i class="bi bi-currency-exchange"></i> Salario: {{ oferta.salario || 'A tratar' }}</p>
-
-            <div class="detalles-nueva-oferta">
-              <h4>Descripción</h4>
-              <p>{{ oferta.descripcion }}</p>
-
-              <h4>Requisitos</h4>
-              <p>{{ oferta.requisitos }}</p>
-            </div>
-
+            <p>Empresa: {{ oferta.empresa }}</p>
+            <p>Ubicación: {{ oferta.ubicacion }}</p>
+            <p>Modalidad: {{ oferta.modalidad }}</p>
+            <p>Categoría: {{ oferta.categoria }}</p>
+            <a [routerLink]="['/empleos', oferta.id]" class="btn-ver-ofertas">Ver oferta</a>
           </article>
-
+        } @empty {
+          <p>No hay ofertas en esta categoría por el momento.</p>
         }
-
       </div>
-
-      @if (ofertasPublicadas.length === 0) {
-        <p class="sin-ofertas">
-          Todavía no hay nuevas ofertas publicadas por empresas.
-        </p>
-      }
-
     </section>
-
-    <!-- Sección para empresas -->
     <section class="seccion-empresas">
-
-      <div class="icono-empresa"><i class="bi bi-megaphone-fill"></i></div>
-
+      <div class="icono-empresa">📢</div>
       <div class="texto-empresa">
-        <h2>¿Eres una empresa?</h2>
-
-        <p>
-          Publica tu oferta laboral y encuentra el mejor talento
-          para tu negocio.
-        </p>
+        <h2>¿Eres una empresa o emprendedor?</h2>
+        <p>Publica ofertas laborales y encuentra talento para tu negocio.</p>
       </div>
-
-      <a
-        routerLink="/publicar-oferta"
-        class="btn-publicar-empresa">
-        Publicar ahora
-      </a>
-
+      <a routerLink="/publicar-oferta" class="btn-publicar-empresa">Publicar ahora</a>
     </section>
-
   </div>
 </section>

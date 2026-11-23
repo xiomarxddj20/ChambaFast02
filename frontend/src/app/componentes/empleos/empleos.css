@@ -261,3 +261,7 @@
     align-items: flex-start;
   }
 }
+
+/* Categorías seleccionables */
+.categoria { cursor: pointer; font-family: inherit; }
+.categoria.activa { background: #e0f5ed; border-color: #20a675; }
