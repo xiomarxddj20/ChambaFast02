@@ -1,0 +1,20 @@
+<section class="cf-pagina"><div class="cf-contenedor">
+  <a routerLink="/mis-ofertas" class="cf-enlace">← Mis ofertas</a>
+  <h1>Postulaciones de la oferta #{{ ofertaId }}</h1>
+  @if (mensaje) { <p role="status">{{ mensaje }}</p> }
+  <div class="cf-lista">
+    @for (item of postulaciones; track item.id) {
+      <article class="cf-tarjeta">
+        <h2>Postulante #{{ item.usuario_id }}</h2>
+        <p>Estado: {{ estadosPostulacion[item.estado] }}</p><p class="cf-multilinea">{{ item.mensaje }}</p>
+        @if (item.estado !== 'aceptada' && item.estado !== 'rechazada') {
+          <div class="cf-acciones">
+            <button type="button" class="cf-boton-secundario" (click)="cambiar(item.id, 'en_revision')">En revisión</button>
+            <button type="button" class="cf-boton" (click)="cambiar(item.id, 'aceptada')">Aceptar</button>
+            <button type="button" class="cf-boton-secundario" (click)="cambiar(item.id, 'rechazada')">Rechazar</button>
+          </div>
+        }
+      </article>
+    } @empty { <p>Esta oferta todavía no tiene postulaciones.</p> }
+  </div>
+</div></section>
