@@ -142,3 +142,4 @@
     font-size: 13px;
   }
 }
+.acciones button { font-family: inherit; border: 0; cursor: pointer; }
