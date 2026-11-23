@@ -114,3 +114,5 @@
     gap: 10px;
   }
 }
+.texto-multilinea { white-space: pre-line; }
+a.btn-postular { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
