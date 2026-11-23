@@ -3,7 +3,7 @@
     <a routerLink="/empleos" class="volver">
       ← Volver a empleos
     </a>
-    <h1>Publicar oferta laboral</h1>
+    <h1>{{ editandoId ? "Editar oferta laboral" : "Publicar oferta laboral" }}</h1>
 
     <p>
       Encuentra el talento que tu empresa necesita.
@@ -118,11 +118,12 @@
         Cancelar
       </a>
 
-      <button type="submit" class="btn-publicar">
-        Publicar oferta
+      <button type="submit" class="btn-publicar" [disabled]="procesando">
+        {{ editandoId ? "Guardar cambios" : "Publicar oferta" }}
       </button>
     </div>
 
+    @if (mensaje) { <p role="status" class="completo">{{ mensaje }}</p> }
   </form>
 </section>
 
