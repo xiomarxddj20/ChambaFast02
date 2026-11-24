@@ -1,72 +1,33 @@
-
-from argon2 import PasswordHasher
-from argon2.exceptions import VerificationError, InvalidHashError
-
-from backend.schemas.auth import RegistroRequest, LoginRequest
-
+from backend.core.security import create_access_token, hash_password, verify_password
+from backend.schemas.auth import LoginRequest, RegistroRequest, UsuarioConHash
+from backend.services.errores import ErrorNegocio
 
 class AuthService:
-
+    """Reglas de registro y login, sin consultas SQL."""
     def __init__(self, repository):
         self.repository = repository
-        self.hasher = PasswordHasher()
 
-    # Registrar un nuevo usuario
-    def registrar(self, datos: RegistroRequest):
-
-        correo = datos.correo.strip().lower()
-
-        # Comprobar que el correo no esté registrado
-        usuario_existente = self.repository.get_by_email(correo)
-
-        if usuario_existente is not None:
-            raise ValueError("El correo ya está registrado")
-
-        # Preparar los datos del usuario
-        nuevo_usuario = {
-            "nombre": datos.nombre.strip(),
-            "apellido": datos.apellido.strip(),
-            "correo": correo,
-            "telefono": datos.telefono.strip(),
-            "rol": datos.rol,
-            "contrasena_hash": self.hasher.hash(datos.contrasena)
+    def registrar(self, datos: RegistroRequest) -> tuple[UsuarioConHash, str, int]:
+        correo = str(datos.correo).strip().lower()
+        if self.repository.get_by_email(correo) is not None:
+            raise ErrorNegocio("Este correo ya está registrado", 409)
+        nuevo = {
+            "nombre": datos.nombre.strip(), "apellido": datos.apellido.strip(),
+            "correo": correo, "telefono": datos.telefono.strip(), "rol": datos.rol,
+            "contrasena_hash": hash_password(datos.contrasena), "activo": True,
         }
+        # El repositorio debe garantizar UNIQUE(correo) también en SQL Server.
+        # Si dos registros coinciden, el repositorio debe traducir el duplicado
+        # a ErrorNegocio(..., 409).
+        usuario = self.repository.add(nuevo)
+        token, segundos = create_access_token(usuario.id)
+        return usuario, token, segundos
 
-        # Solicitar el registro al repositorio
-        return self.repository.add(nuevo_usuario)
-
-    # Verificar una contraseña
-    def verificar_contrasena(
-        self,
-        contrasena: str,
-        contrasena_hash: str
-    ) -> bool:
-
-        try:
-            return self.hasher.verify(
-                contrasena_hash,
-                contrasena
-            )
-
-        except (VerificationError, InvalidHashError):
-            return False
-
-    # Iniciar sesión
-    def autenticar(self, datos: LoginRequest):
-
-        correo = datos.correo.strip().lower()
-
-        # Buscar al usuario
-        usuario = self.repository.get_by_email(correo)
-
-        if usuario is None:
-            raise ValueError("Correo o contraseña incorrectos")
-
-        # Comprobar la contraseña
-        if not self.verificar_contrasena(
-            datos.contrasena,
-            usuario.contrasena_hash
-        ):
-            raise ValueError("Correo o contraseña incorrectos")
-
-        return usuario
+    def autenticar(self, datos: LoginRequest) -> tuple[UsuarioConHash, str, int]:
+        usuario = self.repository.get_by_email(str(datos.correo).strip().lower())
+        if usuario is None or not verify_password(datos.contrasena, usuario.contrasena_hash):
+            raise ErrorNegocio("Correo o contraseña incorrectos", 401)
+        if not usuario.activo:
+            raise ErrorNegocio("La cuenta está desactivada", 403)
+        token, segundos = create_access_token(usuario.id)
+        return usuario, token, segundos
