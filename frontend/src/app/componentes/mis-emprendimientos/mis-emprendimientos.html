@@ -1,0 +1,18 @@
+<section class="cf-pagina"><div class="cf-contenedor">
+  <div class="cf-cabecera"><div><h1>Mis emprendimientos</h1><p>Gestiona tus negocios, productos y servicios.</p></div>
+    <a routerLink="/publicar-emprendimiento" class="cf-boton">+ Nuevo emprendimiento</a></div>
+  @if (mensaje) { <p role="status">{{ mensaje }}</p> }
+  <div class="cf-lista">
+    @for (negocio of negocios; track negocio.id) {
+      <article class="cf-tarjeta">
+        <h2>{{ negocio.nombre }}</h2><p>{{ negocio.categoria }} · {{ negocio.ubicacion }}</p>
+        <p>Estado: {{ negocio.estado }}</p>
+        <div class="cf-acciones">
+          <a class="cf-enlace" [routerLink]="['/emprendimientos', negocio.id]">Ver y administrar productos</a>
+          <a class="cf-enlace" [routerLink]="['/editar-emprendimiento', negocio.id]">Editar negocio</a>
+          <button type="button" class="cf-boton-secundario" (click)="actualizarEstado(negocio)">{{ negocio.estado === "publicado" ? "Ocultar" : "Reactivar" }}</button>
+        </div>
+      </article>
+    } @empty { <p>Aún no has registrado emprendimientos.</p> }
+  </div>
+</div></section>

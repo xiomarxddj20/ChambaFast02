@@ -358,3 +358,6 @@
     grid-template-columns: 1fr;
   }
 }
+
+.imagen-emprendimiento { font-size: 56px; }
+a.btn-conocer { display: flex; align-items: center; justify-content: center; text-decoration: none; }

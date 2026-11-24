@@ -1,0 +1,26 @@
+<section class="cf-pagina"><div class="cf-contenedor">
+  <a routerLink="/emprendimientos" class="cf-enlace">← Volver a emprendimientos</a>
+  <h1>{{ editandoId ? 'Editar emprendimiento' : 'Publicar emprendimiento' }}</h1>
+  <p>Presenta tu negocio y tus servicios a la comunidad de ChambaFast.</p>
+  <form class="cf-formulario" (ngSubmit)="guardar()">
+    <label for="nombre">Nombre del negocio *</label>
+    <input id="nombre" name="nombre" [(ngModel)]="negocio.nombre" required maxlength="120" />
+    <label for="categoria">Categoría *</label>
+    <select id="categoria" name="categoria" [(ngModel)]="negocio.categoria">
+      <option>Alimentos</option><option>Ropa y accesorios</option><option>Tecnología</option>
+      <option>Belleza</option><option>Servicios</option><option>Artesanía</option>
+    </select>
+    <label for="ubicacion">Ubicación *</label>
+    <input id="ubicacion" name="ubicacion" [(ngModel)]="negocio.ubicacion" required />
+    <label for="tipo">¿Qué ofrece tu negocio? *</label>
+    <select id="tipo" name="tipo" [(ngModel)]="negocio.tipo">
+      <option>Productos</option><option>Servicios</option><option>Ambos</option>
+    </select>
+    <label for="contacto">Contacto para tus clientes *</label>
+    <input id="contacto" name="contacto" [(ngModel)]="negocio.contacto" required />
+    <label for="descripcion">Descripción del negocio *</label>
+    <textarea id="descripcion" name="descripcion" [(ngModel)]="negocio.descripcion" rows="5" minlength="15" required></textarea>
+    <button class="cf-boton" [disabled]="procesando" type="submit">{{ editandoId ? 'Guardar cambios' : 'Publicar negocio' }}</button>
+    @if (mensaje) { <p role="status">{{ mensaje }}</p> }
+  </form>
+</div></section>
