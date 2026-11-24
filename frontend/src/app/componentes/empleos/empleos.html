@@ -2,13 +2,21 @@
   <div class="contenedor-empleos">
     <div class="encabezado-empleos">
       <h1>Oportunidades laborales</h1>
-      <p>Explora diferentes áreas laborales y encuentra nuevas oportunidades para crecer profesionalmente.</p>
+      <p>
+        Explora diferentes áreas laborales y encuentra nuevas oportunidades para crecer
+        profesionalmente.
+      </p>
     </div>
     <section class="seccion-categorias">
       <h2>Categorías laborales</h2>
       <div class="categorias">
         @for (categoria of categorias; track categoria) {
-          <button type="button" class="categoria" [class.activa]="categoriaSeleccionada === categoria" (click)="seleccionarCategoria(categoria)">
+          <button
+            type="button"
+            class="categoria"
+            [class.activa]="categoriaSeleccionada === categoria"
+            (click)="seleccionarCategoria(categoria)"
+          >
             <h3>{{ categoria }}</h3>
           </button>
         }
@@ -19,7 +27,9 @@
         <h2>Oportunidades laborales</h2>
         <a routerLink="/publicar-oferta" class="btn-publicar-empleo">+ Publicar oferta laboral</a>
       </div>
-      @if (mensaje) { <p role="status">{{ mensaje }}</p> }
+      @if (mensaje) {
+        <p role="status">{{ mensaje }}</p>
+      }
       <div class="lista-ofertas">
         @for (oferta of ofertasPublicadas; track oferta.id) {
           <article class="oferta">

@@ -1,11 +1,10 @@
 <section class="pagina-auth">
   <div class="contenedor-auth registro-contenedor">
-
     <div class="auth-presentacion">
       <h1>Únete a <span>ChambaFast</span></h1>
       <p>
-        Crea tu cuenta y comienza a descubrir oportunidades,
-        conectar con empresas o impulsar tu emprendimiento.
+        Crea tu cuenta y comienza a descubrir oportunidades, conectar con empresas o impulsar tu
+        emprendimiento.
       </p>
       <div class="auth-icono"><i class="bi bi-rocket-takeoff-fill"></i></div>
     </div>
@@ -15,7 +14,6 @@
       <p class="subtitulo">Completa tus datos para registrarte.</p>
 
       <form (ngSubmit)="registrarUsuario()" #formulario="ngForm">
-
         <div class="campo">
           <label for="nombre">Nombres</label>
           <input
@@ -25,7 +23,7 @@
             [(ngModel)]="nombre"
             placeholder="Ingresa tus nombres"
             required
-          >
+          />
         </div>
 
         <div class="campo">
@@ -37,7 +35,7 @@
             [(ngModel)]="apellido"
             placeholder="Ingresa tus apellidos"
             required
-          >
+          />
         </div>
 
         <div class="campo">
@@ -50,7 +48,7 @@
             placeholder="ejemplo@correo.com"
             required
             email
-          >
+          />
         </div>
 
         <div class="campo">
@@ -62,35 +60,20 @@
             [(ngModel)]="telefono"
             placeholder="Ej. 987654321"
             required
-          >
+          />
         </div>
 
-        
         <div class="campo">
-          <label for="tipoUsuario">
-            ¿Cómo deseas utilizar ChambaFast?
-          </label>
+          <label for="tipoUsuario"> ¿Cómo deseas utilizar ChambaFast? </label>
 
-          <select
-            id="tipoUsuario"
-            name="tipoUsuario"
-            [(ngModel)]="tipoUsuario"
-            required
-          >
-            <option value="" disabled>
-              Selecciona una opción
-            </option>
+          <select id="tipoUsuario" name="tipoUsuario" [(ngModel)]="tipoUsuario" required>
+            <option value="" disabled>Selecciona una opción</option>
 
-            <option value="postulante">
-              Busco empleo
-            </option>
+            <option value="postulante">Busco empleo</option>
 
-            <option value="empresa">
-              Soy empresa o emprendedor
-            </option>
+            <option value="empresa">Soy empresa o emprendedor</option>
           </select>
         </div>
-
 
         <div class="campo">
           <label for="contrasena">Contraseña</label>
@@ -101,7 +84,7 @@
             [(ngModel)]="contrasena"
             placeholder="Mínimo 8 caracteres"
             required
-          >
+          />
         </div>
 
         <div class="campo">
@@ -113,17 +96,14 @@
             [(ngModel)]="confirmarContrasena"
             placeholder="Repite tu contraseña"
             required
-          >
+          />
         </div>
 
-        <button type="submit" class="btn-auth" [disabled]="procesando">
-          Crear cuenta
-        </button>
+        <button type="submit" class="btn-auth" [disabled]="procesando">Crear cuenta</button>
 
         @if (mensaje) {
           <p class="mensaje">{{ mensaje }}</p>
         }
-
       </form>
 
       <p class="texto-registro">
@@ -133,6 +113,5 @@
 
       <a routerLink="/" class="volver">Volver al inicio</a>
     </div>
-
   </div>
 </section>

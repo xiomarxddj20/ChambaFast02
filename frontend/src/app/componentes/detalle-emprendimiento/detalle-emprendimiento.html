@@ -1,42 +1,68 @@
-<section class="cf-pagina"><div class="cf-contenedor">
-  <a routerLink="/emprendimientos" class="cf-enlace">← Volver al catálogo</a>
-  @if (mensaje) { <p role="status">{{ mensaje }}</p> }
-  @if (negocio; as n) {
-    <div class="cf-tarjeta"><h1>{{ n.nombre }}</h1>
-      <p>{{ n.categoria }} · {{ n.tipo }}</p><p>{{ n.ubicacion }}</p>
-      <p class="cf-multilinea">{{ n.descripcion }}</p><p><strong>Contacto:</strong> {{ n.contacto }}</p>
-    </div>
-    <div class="cf-cabecera"><h2>Productos y servicios</h2>
-      @if (esPropietario) { <button type="button" class="cf-boton" (click)="nuevoArticulo()">+ Añadir artículo</button> }
-    </div>
-    @if (esPropietario && mostrandoFormulario) {
-      <form class="cf-formulario" (ngSubmit)="guardarArticulo()">
-        <h3>{{ editandoArticuloId ? 'Editar artículo' : 'Nuevo producto o servicio' }}</h3>
-        <label for="nombre-articulo">Nombre *</label>
-        <input id="nombre-articulo" name="nombre" [(ngModel)]="articulo.nombre" required />
-        <label for="tipo-articulo">Tipo</label>
-        <select id="tipo-articulo" name="tipo" [(ngModel)]="articulo.tipo">
-          <option value="producto">Producto</option><option value="servicio">Servicio</option>
-        </select>
-        <label for="descripcion-articulo">Descripción *</label>
-        <textarea id="descripcion-articulo" name="descripcion" [(ngModel)]="articulo.descripcion" required></textarea>
-        <label for="precio">Precio (opcional)</label><input id="precio" name="precio" [(ngModel)]="articulo.precio" />
-        <button type="submit" class="cf-boton">Guardar artículo</button>
-      </form>
+<section class="cf-pagina">
+  <div class="cf-contenedor">
+    <a routerLink="/emprendimientos" class="cf-enlace">← Volver al catálogo</a>
+    @if (mensaje) {
+      <p role="status">{{ mensaje }}</p>
     }
-    <div class="cf-lista">
-      @for (p of productos; track p.id) {
-        <article class="cf-tarjeta"><h3>{{ p.nombre }}</h3>
-          <p>{{ p.tipo }} · {{ p.precio || 'Consultar precio' }}</p>
-          <p class="cf-multilinea">{{ p.descripcion }}</p>
-          @if (esPropietario) {
-            <div class="cf-acciones">
-              <button type="button" class="cf-boton-secundario" (click)="editarArticulo(p)">Editar</button>
-              <button type="button" class="cf-boton-secundario" (click)="ocultar(p.id)">Ocultar</button>
-            </div>
-          }
-        </article>
-      } @empty { <p>No hay artículos publicados todavía.</p> }
-    </div>
-  }
-</div></section>
+    @if (negocio; as n) {
+      <div class="cf-tarjeta">
+        <h1>{{ n.nombre }}</h1>
+        <p>{{ n.categoria }} · {{ n.tipo }}</p>
+        <p>{{ n.ubicacion }}</p>
+        <p class="cf-multilinea">{{ n.descripcion }}</p>
+        <p><strong>Contacto:</strong> {{ n.contacto }}</p>
+      </div>
+      <div class="cf-cabecera">
+        <h2>Productos y servicios</h2>
+        @if (esPropietario) {
+          <button type="button" class="cf-boton" (click)="nuevoArticulo()">
+            + Añadir artículo
+          </button>
+        }
+      </div>
+      @if (esPropietario && mostrandoFormulario) {
+        <form class="cf-formulario" (ngSubmit)="guardarArticulo()">
+          <h3>{{ editandoArticuloId ? 'Editar artículo' : 'Nuevo producto o servicio' }}</h3>
+          <label for="nombre-articulo">Nombre *</label>
+          <input id="nombre-articulo" name="nombre" [(ngModel)]="articulo.nombre" required />
+          <label for="tipo-articulo">Tipo</label>
+          <select id="tipo-articulo" name="tipo" [(ngModel)]="articulo.tipo">
+            <option value="producto">Producto</option>
+            <option value="servicio">Servicio</option>
+          </select>
+          <label for="descripcion-articulo">Descripción *</label>
+          <textarea
+            id="descripcion-articulo"
+            name="descripcion"
+            [(ngModel)]="articulo.descripcion"
+            required
+          ></textarea>
+          <label for="precio">Precio (opcional)</label
+          ><input id="precio" name="precio" [(ngModel)]="articulo.precio" />
+          <button type="submit" class="cf-boton">Guardar artículo</button>
+        </form>
+      }
+      <div class="cf-lista">
+        @for (p of productos; track p.id) {
+          <article class="cf-tarjeta">
+            <h3>{{ p.nombre }}</h3>
+            <p>{{ p.tipo }} · {{ p.precio || 'Consultar precio' }}</p>
+            <p class="cf-multilinea">{{ p.descripcion }}</p>
+            @if (esPropietario) {
+              <div class="cf-acciones">
+                <button type="button" class="cf-boton-secundario" (click)="editarArticulo(p)">
+                  Editar
+                </button>
+                <button type="button" class="cf-boton-secundario" (click)="ocultar(p.id)">
+                  Ocultar
+                </button>
+              </div>
+            }
+          </article>
+        } @empty {
+          <p>No hay artículos publicados todavía.</p>
+        }
+      </div>
+    }
+  </div>
+</section>

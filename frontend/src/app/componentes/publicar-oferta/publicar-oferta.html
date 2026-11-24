@@ -1,18 +1,15 @@
 <section class="publicar-container">
   <div class="encabezado">
-    <a routerLink="/empleos" class="volver">
-      ← Volver a empleos
-    </a>
-    <h1>{{ editandoId ? "Editar oferta laboral" : "Publicar oferta laboral" }}</h1>
+    <a routerLink="/empleos" class="volver"> ← Volver a empleos </a>
+    <h1>{{ editandoId ? 'Editar oferta laboral' : 'Publicar oferta laboral' }}</h1>
 
     <p>
-      Encuentra el talento que tu empresa necesita.
-      Completa los datos para publicar una nueva oportunidad laboral.
+      Encuentra el talento que tu empresa necesita. Completa los datos para publicar una nueva
+      oportunidad laboral.
     </p>
   </div>
 
   <form class="formulario" (ngSubmit)="publicar()">
-
     <div class="grupo">
       <label for="cargo">Nombre del puesto *</label>
       <input
@@ -21,7 +18,8 @@
         name="cargo"
         [(ngModel)]="oferta.cargo"
         placeholder="Ej. Asistente administrativo"
-        required>
+        required
+      />
     </div>
 
     <div class="grupo">
@@ -32,17 +30,13 @@
         name="empresa"
         [(ngModel)]="oferta.empresa"
         placeholder="Ej. Empresa ABC"
-        required>
+        required
+      />
     </div>
 
     <div class="grupo">
       <label for="categoria">Categoría laboral *</label>
-      <select
-        id="categoria"
-        name="categoria"
-        [(ngModel)]="oferta.categoria"
-        required>
-
+      <select id="categoria" name="categoria" [(ngModel)]="oferta.categoria" required>
         <option value="" disabled>Selecciona una categoría</option>
         <option value="Administración">Administración</option>
         <option value="Tecnología">Tecnología</option>
@@ -50,7 +44,6 @@
         <option value="Atención al cliente">Atención al cliente</option>
         <option value="Marketing">Marketing</option>
         <option value="Diseño">Diseño</option>
-
       </select>
     </div>
 
@@ -62,22 +55,17 @@
         name="ubicacion"
         [(ngModel)]="oferta.ubicacion"
         placeholder="Ej. Huancayo, Junín"
-        required>
+        required
+      />
     </div>
 
     <div class="grupo">
       <label for="modalidad">Modalidad *</label>
-      <select
-        id="modalidad"
-        name="modalidad"
-        [(ngModel)]="oferta.modalidad"
-        required>
-
+      <select id="modalidad" name="modalidad" [(ngModel)]="oferta.modalidad" required>
         <option value="" disabled>Selecciona una modalidad</option>
         <option value="Presencial">Presencial</option>
         <option value="Remoto">Remoto</option>
         <option value="Híbrido">Híbrido</option>
-
       </select>
     </div>
 
@@ -88,7 +76,8 @@
         type="text"
         name="salario"
         [(ngModel)]="oferta.salario"
-        placeholder="Ej. S/ 1,500 mensuales">
+        placeholder="Ej. S/ 1,500 mensuales"
+      />
     </div>
 
     <div class="grupo completo">
@@ -99,7 +88,8 @@
         [(ngModel)]="oferta.descripcion"
         rows="5"
         placeholder="Describe las funciones y responsabilidades..."
-        required></textarea>
+        required
+      ></textarea>
     </div>
 
     <div class="grupo completo">
@@ -110,20 +100,20 @@
         [(ngModel)]="oferta.requisitos"
         rows="4"
         placeholder="Describe los requisitos para el puesto..."
-        required></textarea>
+        required
+      ></textarea>
     </div>
 
     <div class="acciones-formulario">
-      <a routerLink="/empleos" class="btn-cancelar">
-        Cancelar
-      </a>
+      <a routerLink="/empleos" class="btn-cancelar"> Cancelar </a>
 
       <button type="submit" class="btn-publicar" [disabled]="procesando">
-        {{ editandoId ? "Guardar cambios" : "Publicar oferta" }}
+        {{ editandoId ? 'Guardar cambios' : 'Publicar oferta' }}
       </button>
     </div>
 
-    @if (mensaje) { <p role="status" class="completo">{{ mensaje }}</p> }
+    @if (mensaje) {
+      <p role="status" class="completo">{{ mensaje }}</p>
+    }
   </form>
 </section>
-

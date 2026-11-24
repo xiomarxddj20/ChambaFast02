@@ -1,51 +1,70 @@
-<section class="emprendimientos"><div class="contenedor-emprendimientos">
-  <section class="encabezado-emprendimientos">
-    <div class="texto-encabezado">
-      <span class="subtitulo">IMPULSAMOS EL TALENTO LOCAL</span>
-      <h1>Descubre emprendimientos</h1>
-      <p>Conoce negocios, productos y servicios ofrecidos por emprendedores de tu comunidad.</p>
-      <a href="#catalogo" class="btn-explorar">Explorar emprendimientos</a>
-    </div>
-    <div class="ilustracion-encabezado">🛍️ 💡 🚀</div>
-  </section>
-  <section class="seccion-categorias">
-    <h2>Explora por categorías</h2>
-    <p class="descripcion-seccion">Encuentra productos y servicios según tus intereses.</p>
-    <div class="categorias">
-      @for (categoria of categorias; track categoria) {
-        <button type="button" class="categoria" [class.activa]="categoriaSeleccionada === categoria"
-          (click)="seleccionarCategoria(categoria)">{{ categoria }}</button>
+<section class="emprendimientos">
+  <div class="contenedor-emprendimientos">
+    <section class="encabezado-emprendimientos">
+      <div class="texto-encabezado">
+        <span class="subtitulo">IMPULSAMOS EL TALENTO LOCAL</span>
+        <h1>Descubre emprendimientos</h1>
+        <p>Conoce negocios, productos y servicios ofrecidos por emprendedores de tu comunidad.</p>
+        <a href="#catalogo" class="btn-explorar">Explorar emprendimientos</a>
+      </div>
+      <div class="ilustracion-encabezado">🛍️ 💡 🚀</div>
+    </section>
+    <section class="seccion-categorias">
+      <h2>Explora por categorías</h2>
+      <p class="descripcion-seccion">Encuentra productos y servicios según tus intereses.</p>
+      <div class="categorias">
+        @for (categoria of categorias; track categoria) {
+          <button
+            type="button"
+            class="categoria"
+            [class.activa]="categoriaSeleccionada === categoria"
+            (click)="seleccionarCategoria(categoria)"
+          >
+            {{ categoria }}
+          </button>
+        }
+      </div>
+    </section>
+    <section class="catalogo" id="catalogo">
+      <div class="titulo-catalogo">
+        <div>
+          <h2>Emprendimientos</h2>
+          <p>Conoce los negocios de nuestra comunidad.</p>
+        </div>
+        <span class="contador">{{ emprendimientosFiltrados.length }} emprendimientos</span>
+      </div>
+      @if (mensaje) {
+        <p role="status">{{ mensaje }}</p>
       }
-    </div>
-  </section>
-  <section class="catalogo" id="catalogo">
-    <div class="titulo-catalogo">
-      <div><h2>Emprendimientos</h2><p>Conoce los negocios de nuestra comunidad.</p></div>
-      <span class="contador">{{ emprendimientosFiltrados.length }} emprendimientos</span>
-    </div>
-    @if (mensaje) { <p role="status">{{ mensaje }}</p> }
-    <div class="lista-emprendimientos">
-      @for (emprendimiento of emprendimientosFiltrados; track emprendimiento.id) {
-        <article class="tarjeta-emprendimiento">
-          <div class="imagen-emprendimiento">🏬</div>
-          <div class="contenido-tarjeta">
-            <span class="etiqueta-categoria">{{ emprendimiento.categoria }}</span>
-            <h3>{{ emprendimiento.nombre }}</h3>
-            <p class="descripcion">{{ emprendimiento.descripcion }}</p>
-            <div class="informacion">
-              <p>📍 {{ emprendimiento.ubicacion }}</p>
-              <p>🏷️ {{ emprendimiento.tipo }}</p>
+      <div class="lista-emprendimientos">
+        @for (emprendimiento of emprendimientosFiltrados; track emprendimiento.id) {
+          <article class="tarjeta-emprendimiento">
+            <div class="imagen-emprendimiento">🏬</div>
+            <div class="contenido-tarjeta">
+              <span class="etiqueta-categoria">{{ emprendimiento.categoria }}</span>
+              <h3>{{ emprendimiento.nombre }}</h3>
+              <p class="descripcion">{{ emprendimiento.descripcion }}</p>
+              <div class="informacion">
+                <p>📍 {{ emprendimiento.ubicacion }}</p>
+                <p>🏷️ {{ emprendimiento.tipo }}</p>
+              </div>
+              <a class="btn-conocer" [routerLink]="['/emprendimientos', emprendimiento.id]"
+                >Conocer emprendimiento</a
+              >
             </div>
-            <a class="btn-conocer" [routerLink]="['/emprendimientos', emprendimiento.id]">Conocer emprendimiento</a>
-          </div>
-        </article>
-      } @empty { <p>Aún no hay emprendimientos en esta categoría.</p> }
-    </div>
-  </section>
-  <section class="seccion-publicar">
-    <div class="icono-publicar">🚀</div>
-    <div class="texto-publicar"><h2>¿Tienes un emprendimiento?</h2>
-      <p>Da a conocer tu negocio y conecta con nuevos clientes.</p></div>
-    <a routerLink="/publicar-emprendimiento" class="btn-publicar">Publicar mi emprendimiento</a>
-  </section>
-</div></section>
+          </article>
+        } @empty {
+          <p>Aún no hay emprendimientos en esta categoría.</p>
+        }
+      </div>
+    </section>
+    <section class="seccion-publicar">
+      <div class="icono-publicar">🚀</div>
+      <div class="texto-publicar">
+        <h2>¿Tienes un emprendimiento?</h2>
+        <p>Da a conocer tu negocio y conecta con nuevos clientes.</p>
+      </div>
+      <a routerLink="/publicar-emprendimiento" class="btn-publicar">Publicar mi emprendimiento</a>
+    </section>
+  </div>
+</section>

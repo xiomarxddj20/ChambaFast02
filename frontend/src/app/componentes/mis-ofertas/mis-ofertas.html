@@ -1,23 +1,54 @@
-<section class="cf-pagina"><div class="cf-contenedor">
-  <div class="cf-cabecera"><div><h1>Mis ofertas laborales</h1><p>Administra tus publicaciones y revisa postulaciones.</p></div>
-    <a routerLink="/publicar-oferta" class="cf-boton">+ Nueva oferta</a></div>
-  @if (mensaje) { <p role="status">{{ mensaje }}</p> }
-  <div class="cf-lista">
-    @for (oferta of ofertas; track oferta.id) {
-      <article class="cf-tarjeta"><h2>{{ oferta.cargo }}</h2>
-        <p>{{ oferta.empresa }} · {{ oferta.ubicacion }}</p><p>Estado: <strong>{{ oferta.estado }}</strong></p>
-        <div class="cf-acciones">
-          @if (oferta.estado === 'publicada') {
-            <a class="cf-enlace" [routerLink]="['/editar-oferta', oferta.id]">Editar</a>
-          }
-          <a class="cf-enlace" [routerLink]="['/empleos', oferta.id, 'postulaciones']">Ver postulaciones</a>
-          @if (oferta.estado === 'publicada') {
-            <button type="button" class="cf-boton-secundario" [disabled]="cambiandoEstado.has(oferta.id)" (click)="cerrar(oferta.id)">Cerrar oferta</button>
-          } @else {
-            <button type="button" class="cf-boton-secundario" [disabled]="cambiandoEstado.has(oferta.id)" (click)="reabrir(oferta.id)">Reabrir oferta</button>
-          }
-        </div>
-      </article>
-    } @empty { <p>No has publicado ofertas todavía.</p> }
+<section class="cf-pagina">
+  <div class="cf-contenedor">
+    <div class="cf-cabecera">
+      <div>
+        <h1>Mis ofertas laborales</h1>
+        <p>Administra tus publicaciones y revisa postulaciones.</p>
+      </div>
+      <a routerLink="/publicar-oferta" class="cf-boton">+ Nueva oferta</a>
+    </div>
+    @if (mensaje) {
+      <p role="status">{{ mensaje }}</p>
+    }
+    <div class="cf-lista">
+      @for (oferta of ofertas; track oferta.id) {
+        <article class="cf-tarjeta">
+          <h2>{{ oferta.cargo }}</h2>
+          <p>{{ oferta.empresa }} · {{ oferta.ubicacion }}</p>
+          <p>
+            Estado: <strong>{{ oferta.estado }}</strong>
+          </p>
+          <div class="cf-acciones">
+            @if (oferta.estado === 'publicada') {
+              <a class="cf-enlace" [routerLink]="['/editar-oferta', oferta.id]">Editar</a>
+            }
+            <a class="cf-enlace" [routerLink]="['/empleos', oferta.id, 'postulaciones']"
+              >Ver postulaciones</a
+            >
+            @if (oferta.estado === 'publicada') {
+              <button
+                type="button"
+                class="cf-boton-secundario"
+                [disabled]="cambiandoEstado.has(oferta.id)"
+                (click)="cerrar(oferta.id)"
+              >
+                Cerrar oferta
+              </button>
+            } @else {
+              <button
+                type="button"
+                class="cf-boton-secundario"
+                [disabled]="cambiandoEstado.has(oferta.id)"
+                (click)="reabrir(oferta.id)"
+              >
+                Reabrir oferta
+              </button>
+            }
+          </div>
+        </article>
+      } @empty {
+        <p>No has publicado ofertas todavía.</p>
+      }
+    </div>
   </div>
-</div></section>
+</section>

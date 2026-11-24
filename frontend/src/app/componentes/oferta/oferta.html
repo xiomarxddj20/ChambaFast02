@@ -1,25 +1,37 @@
-<section class="detalle-oferta"><div class="contenedor-oferta">
-  <a routerLink="/empleos" class="volver">← Volver a empleos</a>
-  @if (mensaje) { <p role="status">{{ mensaje }}</p> }
-  @if (oferta; as empleo) {
-    <div class="encabezado-oferta">
-      <span class="etiqueta">Oportunidad laboral</span>
-      <h1>{{ empleo.cargo }}</h1><p class="empresa">{{ empleo.empresa }}</p>
-      <div class="informacion"><span>📍 {{ empleo.ubicacion }}</span><span>💼 {{ empleo.modalidad }}</span></div>
-    </div>
-    <div class="contenido-oferta">
-      <div class="descripcion">
-        <h2>Descripción del puesto</h2><p class="texto-multilinea">{{ empleo.descripcion }}</p>
-        <h2>Requisitos</h2><p class="texto-multilinea">{{ empleo.requisitos }}</p>
+<section class="detalle-oferta">
+  <div class="contenedor-oferta">
+    <a routerLink="/empleos" class="volver">← Volver a empleos</a>
+    @if (mensaje) {
+      <p role="status">{{ mensaje }}</p>
+    }
+    @if (oferta; as empleo) {
+      <div class="encabezado-oferta">
+        <span class="etiqueta">Oportunidad laboral</span>
+        <h1>{{ empleo.cargo }}</h1>
+        <p class="empresa">{{ empleo.empresa }}</p>
+        <div class="informacion">
+          <span>📍 {{ empleo.ubicacion }}</span
+          ><span>💼 {{ empleo.modalidad }}</span>
+        </div>
       </div>
-      <aside class="tarjeta-postulacion">
-        <h2>Información del empleo</h2>
-        <p><strong>Salario:</strong> {{ empleo.salario || 'A tratar' }}</p>
-        <p><strong>Modalidad:</strong> {{ empleo.modalidad }}</p>
-        <p><strong>Categoría:</strong> {{ empleo.categoria }}</p>
-        <p><strong>Ubicación:</strong> {{ empleo.ubicacion }}</p>
-        <a class="btn-postular" [routerLink]="['/empleos', empleo.id, 'postular']">Postular ahora</a>
-      </aside>
-    </div>
-  }
-</div></section>
+      <div class="contenido-oferta">
+        <div class="descripcion">
+          <h2>Descripción del puesto</h2>
+          <p class="texto-multilinea">{{ empleo.descripcion }}</p>
+          <h2>Requisitos</h2>
+          <p class="texto-multilinea">{{ empleo.requisitos }}</p>
+        </div>
+        <aside class="tarjeta-postulacion">
+          <h2>Información del empleo</h2>
+          <p><strong>Salario:</strong> {{ empleo.salario || 'A tratar' }}</p>
+          <p><strong>Modalidad:</strong> {{ empleo.modalidad }}</p>
+          <p><strong>Categoría:</strong> {{ empleo.categoria }}</p>
+          <p><strong>Ubicación:</strong> {{ empleo.ubicacion }}</p>
+          <a class="btn-postular" [routerLink]="['/empleos', empleo.id, 'postular']"
+            >Postular ahora</a
+          >
+        </aside>
+      </div>
+    }
+  </div>
+</section>

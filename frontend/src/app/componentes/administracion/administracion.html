@@ -1,9 +1,12 @@
-<section class="cf-pagina"><div class="cf-contenedor">
-  <h1>Administración de ChambaFast</h1>
-  <p>Control básico de usuarios registrados.</p>
-  @if (mensaje) { <p role="status">{{ mensaje }}</p> }
-  <div class="cf-lista">
-    @for (usuario of usuarios; track usuario.id) {
+<section class="cf-pagina">
+  <div class="cf-contenedor">
+    <h1>Administración de ChambaFast</h1>
+    <p>Control básico de usuarios registrados.</p>
+    @if (mensaje) {
+    <p role="status">{{ mensaje }}</p>
+    }
+    <div class="cf-lista">
+      @for (usuario of usuarios; track usuario.id) {
       <article class="cf-tarjeta">
         <h2>{{ usuario.nombre }} {{ usuario.apellido }}</h2>
         <p>{{ usuario.correo }} · {{ usuario.rol }}</p>
@@ -12,6 +15,9 @@
           {{ usuario.activo ? 'Desactivar' : 'Activar' }}
         </button>
       </article>
-    } @empty { <p>No hay usuarios para mostrar.</p> }
+      } @empty {
+      <p>No hay usuarios para mostrar.</p>
+      }
+    </div>
   </div>
-</div></section>
+</section>

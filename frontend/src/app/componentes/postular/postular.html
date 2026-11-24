@@ -1,12 +1,22 @@
-<section class="cf-pagina"><div class="cf-contenedor">
-  <a [routerLink]="['/empleos', ofertaId]" class="cf-enlace">← Volver a la oferta</a>
-  <h1>Postular a esta oferta</h1>
-  <p>En ChambaFast puedes enviar una postulación por cada oferta laboral.</p>
-  <form (ngSubmit)="enviar()" class="cf-formulario">
-    <label for="mensaje">Mensaje de presentación (opcional)</label>
-    <textarea id="mensaje" name="mensaje" rows="6" maxlength="1200"
-      [(ngModel)]="mensajePostulacion" placeholder="Cuéntale brevemente a la empresa sobre tu interés"></textarea>
-    <button type="submit" class="cf-boton" [disabled]="procesando">Enviar postulación</button>
-    @if (mensaje) { <p role="status">{{ mensaje }}</p> }
-  </form>
-</div></section>
+<section class="cf-pagina">
+  <div class="cf-contenedor">
+    <a [routerLink]="['/empleos', ofertaId]" class="cf-enlace">← Volver a la oferta</a>
+    <h1>Postular a esta oferta</h1>
+    <p>En ChambaFast puedes enviar una postulación por cada oferta laboral.</p>
+    <form (ngSubmit)="enviar()" class="cf-formulario">
+      <label for="mensaje">Mensaje de presentación (opcional)</label>
+      <textarea
+        id="mensaje"
+        name="mensaje"
+        rows="6"
+        maxlength="1200"
+        [(ngModel)]="mensajePostulacion"
+        placeholder="Cuéntale brevemente a la empresa sobre tu interés"
+      ></textarea>
+      <button type="submit" class="cf-boton" [disabled]="procesando">Enviar postulación</button>
+      @if (mensaje) {
+        <p role="status">{{ mensaje }}</p>
+      }
+    </form>
+  </div>
+</section>
