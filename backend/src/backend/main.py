@@ -1,13 +1,13 @@
-from contextlib import asynccontextmanager
+import os
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from backend.apis.admin import crear_router_admin
 from backend.apis.auth import crear_router_auth
 from backend.apis.emprendimientos import crear_router_emprendimientos
 from backend.apis.ofertas import crear_router_ofertas
 from backend.apis.postulaciones import crear_router_postulaciones
-from backend.repositories.memoria import iniciar_demo
 from backend.dependencias import (
     get_admin_service,
     get_auth_service,
@@ -17,20 +17,25 @@ from backend.dependencias import (
     get_postulaciones_service,
 )
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    iniciar_demo()
-    yield
-
-
 app = FastAPI(
     title="ChambaFast API",
     description="Backend de ChambaFast",
     version="1.0.0",
-    lifespan=lifespan,
 )
 
-# API de demostración independiente de Angular; solo almacena en memoria.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        origen.strip()
+        for origen in os.environ.get(
+            "FRONTEND_ORIGINS", "http://localhost:4200,http://127.0.0.1:4200"
+        ).split(",")
+        if origen.strip()
+    ],
+    allow_methods=["GET", "POST", "PUT", "PATCH", "OPTIONS"],
+    allow_headers=["Authorization", "Content-Type"],
+)
+
 app.include_router(crear_router_auth(get_auth_service, get_current_user))
 app.include_router(crear_router_ofertas(get_ofertas_service, get_current_user))
 app.include_router(

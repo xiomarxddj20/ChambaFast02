@@ -1,20 +1,19 @@
-"""Repositorio temporal de productos y servicios."""
-from backend.repositories import memoria as m
+"""Repositorio SQL Server de productos y servicios."""
+from backend.repositories.sql import SqlRepository
 from backend.schemas.emprendimientos import ProductoServicioPublico
 
-class ProductosRepository:
+class ProductosRepository(SqlRepository):
+    tabla = "productos_servicios"
+    modelo = ProductoServicioPublico
+
     def listar_publicados(self, emprendimiento_id: int) -> list[ProductoServicioPublico]:
-        with m.candado:
-            return [p.model_copy(deep=True) for p in m.productos.values()
-                    if p.emprendimiento_id == emprendimiento_id and p.estado == 'publicado']
+        return self._listar("[emprendimiento_id] = ? AND [estado] = ?", (emprendimiento_id, "publicado"))
 
     def obtener(self, articulo_id: int) -> ProductoServicioPublico | None:
-        with m.candado:
-            p = m.productos.get(articulo_id)
-            return p.model_copy(deep=True) if p else None
+        return self._obtener("[id] = ?", (articulo_id,))
 
     def agregar(self, datos: dict) -> ProductoServicioPublico:
-        return m.agregar(m.productos, ProductoServicioPublico, datos)
+        return self._agregar(datos)
 
     def actualizar(self, articulo_id: int, cambios: dict) -> ProductoServicioPublico:
-        return m.actualizar(m.productos, articulo_id, cambios)
+        return self._actualizar(articulo_id, cambios)
